@@ -1,0 +1,450 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables CSS para tema de sistemas */
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #1e40af;
+  --accent-color: #3b82f6;
+  --background-dark: #0f172a;
+  --background-light: #1e293b;
+  --surface-color: #334155;
+  --card-background: rgba(51, 65, 85, 0.95);
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-color: #475569;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
+  --shadow-dark: rgba(0, 0, 0, 0.3);
+  --shadow-light: rgba(59, 130, 246, 0.1);
+}
+
+/* Estilos globales */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
+  min-height: 100vh;
+  color: var(--text-primary);
+  position: relative;
+  overflow-x: hidden;
+  padding: 2rem;
+}
+
+/* Efecto de grid de fondo para tema de sistemas */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 25s linear infinite;
+  z-index: -1;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(60px, 60px); }
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeIn 0.8s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Título principal */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 2px;
+}
+
+/* Sección de perfil */
+.profile-section {
+  background: var(--card-background);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 
+    0 20px 25px -5px var(--shadow-dark),
+    0 10px 10px -5px var(--shadow-dark),
+    0 0 0 1px rgba(59, 130, 246, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  opacity: 0.6;
+}
+
+/* Estilos para elementos fuera de profile-section */
+#nombre, #email {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+#nombre {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+}
+
+#nombre::before {
+  content: '👤';
+  color: var(--accent-color);
+  font-size: 1rem;
+}
+
+#email {
+  color: var(--text-muted);
+}
+
+#email::before {
+  content: '✉️';
+  color: var(--accent-color);
+  font-size: 1rem;
+}
+
+/* Imagen de perfil cuando está fuera de profile-section */
+#foto {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--accent-color);
+  object-fit: cover;
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+  transition: transform 0.3s ease;
+  margin: 1rem auto;
+  display: block;
+}
+
+#foto:hover {
+  transform: scale(1.05);
+}
+
+/* Información del usuario */
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-info p {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.user-info p::before {
+  content: '▶';
+  color: var(--accent-color);
+  font-size: 0.8rem;
+}
+
+#nombre {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+}
+
+#email {
+  color: var(--text-muted);
+}
+
+/* Contenedor de botones */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Estilos base para botones */
+.btn {
+  padding: 1.5rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+  border: 1px solid transparent;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+  transform: translateY(-2px);
+}
+
+/* Botón Práctica 1 */
+.btn-practica1 {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border-color: #065f46;
+}
+
+.btn-practica1:hover {
+  box-shadow: 0 15px 30px rgba(16, 185, 129, 0.4);
+}
+
+/* Botón Práctica 2 */
+.btn-practica2 {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  border-color: #92400e;
+}
+
+.btn-practica2:hover {
+  box-shadow: 0 15px 30px rgba(245, 158, 11, 0.4);
+}
+
+/* Botón Consultas */
+.btn-consultas {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border-color: var(--secondary-color);
+}
+
+.btn-consultas:hover {
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+}
+
+/* Iconos para botones */
+.btn-practica1::after {
+  content: '📝';
+  margin-left: 0.5rem;
+}
+
+.btn-practica2::after {
+  content: '📊';
+  margin-left: 0.5rem;
+}
+
+.btn-consultas::after {
+  content: '💬';
+  margin-left: 0.5rem;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-section {
+  animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+.btn {
+  animation: fadeIn 0.8s ease-out 0.4s both;
+}
+
+.btn:nth-child(1) {
+  animation-delay: 0.4s;
+}
+
+.btn:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+.btn:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+/* Efectos de partículas decorativas */
+.profile-section::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .profile-section {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  
+  .buttons {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .btn {
+    padding: 1.2rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  #foto {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-section {
+    padding: 1.5rem;
+  }
+  
+  .user-info p {
+    font-size: 1rem;
+  }
+  
+  #nombre {
+    font-size: 1.1rem;
+  }
+  
+  .btn {
+    padding: 1rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Estados de carga */
+.loading {
+  position: relative;
+  color: transparent;
+}
+
+.loading::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Efectos adicionales */
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Hover effects para la sección de perfil */
+.profile-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 25px 35px -5px var(--shadow-dark),
+    0 15px 15px -5px var(--shadow-dark),
+    0 0 0 1px rgba(59, 130, 246, 0.2);
+}

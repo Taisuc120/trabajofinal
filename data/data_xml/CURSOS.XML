@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<CURSOS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<CURSO>
+		<ID_CURSO>C001</ID_CURSO>
+		<NOMBRE_CURSO>OFIMATICA</NOMBRE_CURSO>
+		<N_HORA>4</N_HORA>
+	</CURSO>
+	<CURSO>
+		<ID_CURSO>C002</ID_CURSO>
+		<NOMBRE_CURSO>PROGRAMACION</NOMBRE_CURSO>
+		<N_HORA>6</N_HORA>
+	</CURSO>
+	<CURSO>
+		<ID_CURSO>C003</ID_CURSO>
+		<NOMBRE_CURSO>INGLES</NOMBRE_CURSO>
+		<N_HORA>3</N_HORA>
+	</CURSO>
+</CURSOS>

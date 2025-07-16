@@ -1,0 +1,492 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables CSS para tema de sistemas */
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #1e40af;
+  --accent-color: #3b82f6;
+  --background-dark: #0f172a;
+  --background-light: #1e293b;
+  --surface-color: #334155;
+  --card-background: rgba(51, 65, 85, 0.95);
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-color: #475569;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
+  --info-color: #06b6d4;
+  --shadow-dark: rgba(0, 0, 0, 0.3);
+  --shadow-light: rgba(59, 130, 246, 0.1);
+  --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  --gradient-success: linear-gradient(135deg, #10b981, #059669);
+  --gradient-warning: linear-gradient(135deg, #f59e0b, #d97706);
+  --gradient-error: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+/* Estilos globales */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
+  min-height: 100vh;
+  color: var(--text-primary);
+  position: relative;
+  overflow-x: hidden;
+  padding: 2rem;
+  line-height: 1.6;
+}
+
+/* Efecto de grid de fondo para tema de sistemas */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridMove 30s linear infinite;
+  z-index: -1;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+/* Título principal */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  animation: fadeInDown 0.8s ease-out;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 2px;
+}
+
+/* Subtítulos */
+h2 {
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  padding-left: 20px;
+  animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 25px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+}
+
+/* Información del alumno */
+#datos_alumno {
+  background: var(--card-background);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 
+    0 20px 25px -5px var(--shadow-dark),
+    0 10px 10px -5px var(--shadow-dark),
+    0 0 0 1px rgba(59, 130, 246, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.8s ease-out 0.4s both;
+}
+
+#datos_alumno::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  opacity: 0.6;
+}
+
+#datos_alumno:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 25px 35px -5px var(--shadow-dark),
+    0 15px 15px -5px var(--shadow-dark),
+    0 0 0 1px rgba(59, 130, 246, 0.2);
+}
+
+#datos_alumno h2 {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
+  padding-left: 15px;
+}
+
+#datos_alumno h2::before {
+  background: var(--gradient-error);
+  width: 3px;
+  height: 18px;
+}
+
+/* Estilos para las tablas */
+table {
+  width: 100%;
+  margin-bottom: 2rem;
+  background: var(--card-background);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 
+    0 20px 25px -5px var(--shadow-dark),
+    0 10px 10px -5px var(--shadow-dark),
+    0 0 0 1px rgba(59, 130, 246, 0.1);
+  border-collapse: separate;
+  border-spacing: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.8s ease-out 0.6s both;
+  position: relative;
+}
+
+table::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  opacity: 0.6;
+}
+
+table:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 25px 35px -5px var(--shadow-dark),
+    0 15px 15px -5px var(--shadow-dark),
+    0 0 0 1px rgba(59, 130, 246, 0.2);
+}
+
+/* Encabezados de tabla */
+thead {
+  background: var(--gradient-primary);
+  color: white;
+  position: relative;
+}
+
+th {
+  padding: 1.5rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--accent-color);
+  position: relative;
+  color: white;
+}
+
+th:first-child {
+  border-top-left-radius: 16px;
+}
+
+th:last-child {
+  border-top-right-radius: 16px;
+}
+
+/* Celdas de datos */
+td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+/* Filas alternas */
+tbody tr:nth-child(even) {
+  background-color: rgba(59, 130, 246, 0.05);
+}
+
+tbody tr:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+tbody tr:hover td {
+  color: var(--text-primary);
+}
+
+/* Identificadores específicos para cada tabla */
+#talumno {
+  border-top: 4px solid var(--primary-color);
+}
+
+#talumno thead {
+  background: var(--gradient-primary);
+}
+
+#tdocente {
+  border-top: 4px solid var(--error-color);
+}
+
+#tdocente thead {
+  background: var(--gradient-error);
+}
+
+#tcurso {
+  border-top: 4px solid var(--success-color);
+}
+
+#tcurso thead {
+  background: var(--gradient-success);
+}
+
+/* Efectos de hover para tablas específicas */
+#talumno:hover {
+  box-shadow: 
+    0 25px 35px -5px rgba(37, 99, 235, 0.3),
+    0 15px 15px -5px var(--shadow-dark),
+    0 0 0 1px rgba(59, 130, 246, 0.2);
+}
+
+#tdocente:hover {
+  box-shadow: 
+    0 25px 35px -5px rgba(239, 68, 68, 0.3),
+    0 15px 15px -5px var(--shadow-dark),
+    0 0 0 1px rgba(239, 68, 68, 0.2);
+}
+
+#tcurso:hover {
+  box-shadow: 
+    0 25px 35px -5px rgba(16, 185, 129, 0.3),
+    0 15px 15px -5px var(--shadow-dark),
+    0 0 0 1px rgba(16, 185, 129, 0.2);
+}
+
+/* Estados de carga para tablas */
+.loading-table {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  gap: 1rem;
+  color: var(--accent-color);
+  font-size: 1.1rem;
+}
+
+.loading-table::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  border: 3px solid transparent;
+  border-top: 3px solid var(--accent-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Mensaje de tabla vacía */
+.empty-table {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.empty-table::before {
+  content: '📋';
+  display: block;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin: 1.5rem 0 0.8rem 0;
+  }
+  
+  #datos_alumno {
+    padding: 1.5rem;
+  }
+  
+  #datos_alumno h2 {
+    font-size: 1.1rem;
+  }
+  
+  table {
+    font-size: 0.9rem;
+  }
+  
+  th, td {
+    padding: 0.8rem 0.6rem;
+  }
+  
+  th {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0.8rem;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.3rem;
+  }
+  
+  #datos_alumno {
+    padding: 1.2rem;
+  }
+  
+  #datos_alumno h2 {
+    font-size: 1rem;
+  }
+  
+  table {
+    font-size: 0.85rem;
+  }
+  
+  th, td {
+    padding: 0.6rem 0.4rem;
+  }
+  
+  th {
+    font-size: 0.8rem;
+  }
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+}
+
+/* Efectos adicionales */
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Indicadores de estado */
+.status-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.status-active {
+  background: var(--success-color);
+  box-shadow: 0 0 6px var(--success-color);
+}
+
+.status-inactive {
+  background: var(--error-color);
+  box-shadow: 0 0 6px var(--error-color);
+}
+
+.status-pending {
+  background: var(--warning-color);
+  box-shadow: 0 0 6px var(--warning-color);
+}

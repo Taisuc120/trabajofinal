@@ -1,0 +1,22 @@
+{
+    "Docentes": [
+        {
+        "dni" : "72977654",
+        "nombre": "Javier",
+        "apellido": "Olvea",
+        "curso" : "C003"
+    },
+    {    
+        "dni" : "72977123",
+        "nombre": "Juan Carlos",
+        "apellido": "Quirita",
+        "curso" : "C002"
+    },
+    {    
+        "dni" : "72977123",
+        "nombre": "Alfredo",
+        "apellido": "Ccari",
+        "curso" : "C001"
+    }
+    ]
+}

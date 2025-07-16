@@ -1,0 +1,22 @@
+{
+    "Estudiante": [
+        {
+        "dni" : "72977654",
+        "nombre": "Maria",
+        "apellido": "Mamani",
+        "edad" : "19"
+    },
+    {    
+        "dni" : "72977123",
+        "nombre": "Edson",
+        "apellido": "Quispe",
+        "edad" : "21"
+    },
+    {    
+        "dni" : "72977123",
+        "nombre": "Mario",
+        "apellido": "Torres",
+        "edad" : "20"
+    }
+    ]
+}

@@ -1,0 +1,610 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables CSS para tema de sistemas JSON */
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #1e40af;
+  --accent-color: #3b82f6;
+  --json-color: #10b981;
+  --json-secondary: #059669;
+  --background-dark: #0f172a;
+  --background-light: #1e293b;
+  --surface-color: #334155;
+  --card-background: rgba(51, 65, 85, 0.95);
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-color: #475569;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
+  --info-color: #06b6d4;
+  --shadow-dark: rgba(0, 0, 0, 0.3);
+  --shadow-light: rgba(59, 130, 246, 0.1);
+  --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  --gradient-json: linear-gradient(135deg, var(--json-color), var(--json-secondary));
+  --gradient-success: linear-gradient(135deg, #10b981, #059669);
+  --gradient-warning: linear-gradient(135deg, #f59e0b, #d97706);
+  --gradient-error: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+/* Estilos globales */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
+  min-height: 100vh;
+  color: var(--text-primary);
+  position: relative;
+  overflow-x: hidden;
+  padding: 2rem;
+  line-height: 1.6;
+}
+
+/* Efecto de grid de fondo para tema JSON */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridMove 30s linear infinite;
+  z-index: -1;
+}
+
+/* Patrón JSON de fondo */
+body::after {
+  content: '{ "api": "json", "status": "active" }';
+  position: fixed;
+  top: 10%;
+  right: -20%;
+  font-size: 8rem;
+  color: rgba(16, 185, 129, 0.02);
+  font-family: 'Courier New', monospace;
+  transform: rotate(-15deg);
+  z-index: -1;
+  white-space: nowrap;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+/* Título principal */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--json-color), var(--primary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  animation: fadeInDown 0.8s ease-out;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--json-color), var(--primary-color));
+  border-radius: 2px;
+}
+
+/* Elemento JSON decorativo en el título */
+h1::before {
+  content: '{ }';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  color: var(--json-color);
+  font-family: 'Courier New', monospace;
+  opacity: 0.6;
+}
+
+/* Contenedor de encabezados */
+#encabezados {
+  background: var(--card-background);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 
+    0 20px 25px -5px var(--shadow-dark),
+    0 10px 10px -5px var(--shadow-dark),
+    0 0 0 1px rgba(16, 185, 129, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.8s ease-out 0.2s both;
+  border-left: 4px solid var(--json-color);
+}
+
+#encabezados::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--json-color), transparent);
+  opacity: 0.6;
+}
+
+#encabezados:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 25px 35px -5px var(--shadow-dark),
+    0 15px 15px -5px var(--shadow-dark),
+    0 0 0 1px rgba(16, 185, 129, 0.2);
+}
+
+/* Elementos dentro de encabezados */
+#encabezados h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  background: var(--gradient-json);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: none;
+}
+
+#encabezados h1::after,
+#encabezados h1::before {
+  display: none;
+}
+
+#encabezados h3 {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  font-weight: 500;
+  position: relative;
+  padding-left: 15px;
+}
+
+#encabezados h3::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--json-color);
+  font-weight: bold;
+}
+
+/* Fila de información */
+#fila {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+#fila h3 {
+  flex: 1;
+  min-width: 200px;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  transition: all 0.3s ease;
+}
+
+#fila h3:hover {
+  background: rgba(16, 185, 129, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Subtítulos de sección */
+h2 {
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  padding-left: 20px;
+  animation: fadeIn 0.8s ease-out 0.4s both;
+}
+
+h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 25px;
+  background: var(--gradient-json);
+  border-radius: 2px;
+}
+
+/* Contenedores de tablas */
+#t_alumnos, #t_cursos, #t_docentes {
+  margin-bottom: 2rem;
+  animation: fadeIn 0.8s ease-out 0.6s both;
+}
+
+#t_cursos {
+  animation-delay: 0.8s;
+}
+
+#t_docentes {
+  animation-delay: 1s;
+}
+
+/* Estilos para las tablas */
+table {
+  width: 100%;
+  background: var(--card-background);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 
+    0 20px 25px -5px var(--shadow-dark),
+    0 10px 10px -5px var(--shadow-dark),
+    0 0 0 1px rgba(16, 185, 129, 0.1);
+  border-collapse: separate;
+  border-spacing: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+table::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--json-color), transparent);
+  opacity: 0.6;
+}
+
+table:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 25px 35px -5px var(--shadow-dark),
+    0 15px 15px -5px var(--shadow-dark),
+    0 0 0 1px rgba(16, 185, 129, 0.2);
+}
+
+/* Encabezados de tabla */
+thead {
+  background: var(--gradient-json);
+  color: white;
+  position: relative;
+}
+
+th {
+  padding: 1.5rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--json-color);
+  position: relative;
+  color: white;
+}
+
+th:first-child {
+  border-top-left-radius: 16px;
+}
+
+th:last-child {
+  border-top-right-radius: 16px;
+}
+
+/* Celdas de datos */
+td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Filas alternas */
+tbody tr:nth-child(even) {
+  background-color: rgba(16, 185, 129, 0.05);
+}
+
+tbody tr:hover {
+  background-color: rgba(16, 185, 129, 0.1);
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+tbody tr:hover td {
+  color: var(--text-primary);
+}
+
+/* Identificadores específicos para cada tabla */
+#tabla-estudiantes {
+  border-top: 4px solid var(--json-color);
+}
+
+#tabla-cursos {
+  border-top: 4px solid var(--primary-color);
+}
+
+#tabla-cursos thead {
+  background: var(--gradient-primary);
+}
+
+#tabla-docentes {
+  border-top: 4px solid var(--error-color);
+}
+
+#tabla-docentes thead {
+  background: var(--gradient-error);
+}
+
+/* Efectos de hover para tablas específicas */
+#tabla-estudiantes:hover {
+  box-shadow: 
+    0 25px 35px -5px rgba(16, 185, 129, 0.3),
+    0 15px 15px -5px var(--shadow-dark),
+    0 0 0 1px rgba(16, 185, 129, 0.2);
+}
+
+#tabla-cursos:hover {
+  box-shadow: 
+    0 25px 35px -5px rgba(37, 99, 235, 0.3),
+    0 15px 15px -5px var(--shadow-dark),
+    0 0 0 1px rgba(59, 130, 246, 0.2);
+}
+
+#tabla-docentes:hover {
+  box-shadow: 
+    0 25px 35px -5px rgba(239, 68, 68, 0.3),
+    0 15px 15px -5px var(--shadow-dark),
+    0 0 0 1px rgba(239, 68, 68, 0.2);
+}
+
+/* Estados de carga para tablas */
+.loading-table {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  gap: 1rem;
+  color: var(--json-color);
+  font-size: 1.1rem;
+}
+
+.loading-table::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  border: 3px solid transparent;
+  border-top: 3px solid var(--json-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Mensaje de tabla vacía */
+.empty-table {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.empty-table::before {
+  content: '{ "data": [] }';
+  display: block;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+  font-family: 'Courier New', monospace;
+  color: var(--json-color);
+}
+
+/* Indicadores JSON */
+.json-indicator {
+  position: relative;
+}
+
+.json-indicator::after {
+  content: '{ }';
+  position: absolute;
+  top: -5px;
+  right: -15px;
+  font-size: 0.8rem;
+  color: var(--json-color);
+  opacity: 0.6;
+  font-family: 'Courier New', monospace;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin: 1.5rem 0 0.8rem 0;
+  }
+  
+  #encabezados {
+    padding: 1.5rem;
+  }
+  
+  #encabezados h1 {
+    font-size: 1.5rem;
+  }
+  
+  #encabezados h3 {
+    font-size: 1rem;
+  }
+  
+  #fila {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  #fila h3 {
+    min-width: auto;
+  }
+  
+  table {
+    font-size: 0.9rem;
+  }
+  
+  th, td {
+    padding: 0.8rem 0.6rem;
+  }
+  
+  th {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0.8rem;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.3rem;
+  }
+  
+  #encabezados {
+    padding: 1.2rem;
+  }
+  
+  #encabezados h1 {
+    font-size: 1.3rem;
+  }
+  
+  #encabezados h3 {
+    font-size: 0.9rem;
+  }
+  
+  table {
+    font-size: 0.85rem;
+  }
+  
+  th, td {
+    padding: 0.6rem 0.4rem;
+  }
+  
+  th {
+    font-size: 0.8rem;
+  }
+  
+  body::after {
+    font-size: 4rem;
+    top: 5%;
+    right: -30%;
+  }
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gradient-json);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--json-secondary), var(--json-color));
+}
+
+/* Efectos adicionales */
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Elementos destacados con tema JSON */
+.json-highlight {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 8px;
+  padding: 0.5rem;
+  font-family: 'Courier New', monospace;
+  color: var(--json-color);
+}
+
+/* Separadores JSON */
+.json-separator {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--json-color), transparent);
+  margin: 1rem 0;
+  border-radius: 1px;
+  opacity: 0.3;
+}

@@ -1,0 +1,296 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables CSS para tema de sistemas */
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #1e40af;
+  --accent-color: #3b82f6;
+  --background-dark: #0f172a;
+  --background-light: #1e293b;
+  --surface-color: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-color: #475569;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --shadow-dark: rgba(0, 0, 0, 0.3);
+  --shadow-light: rgba(59, 130, 246, 0.1);
+}
+
+/* Estilos globales */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--background-dark) 0%, var(--background-light) 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto de grid de fondo para tema de sistemas */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridMove 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes gridMove {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+/* Contenedor principal del login */
+.login-container {
+  background: rgba(51, 65, 85, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 
+    0 20px 25px -5px var(--shadow-dark),
+    0 10px 10px -5px var(--shadow-dark),
+    0 0 0 1px rgba(59, 130, 246, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+/* Efecto de brillo sutil */
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  opacity: 0.6;
+}
+
+/* Título */
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  position: relative;
+}
+
+.login-container h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 2px;
+}
+
+/* Estilos para inputs */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  margin-bottom: 1rem;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: var(--text-muted);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+/* Botón principal */
+button {
+  width: 100%;
+  padding: 0.875rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Divisor */
+.divider {
+  text-align: center;
+  margin: 1.5rem 0;
+  position: relative;
+  color: var(--text-muted);
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.divider span {
+  background: var(--surface-color);
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Botón de Google */
+.g_id_signin {
+  width: 100% !important;
+  margin-top: 1rem;
+}
+
+.g_id_signin > div {
+  width: 100% !important;
+  justify-content: center !important;
+}
+
+/* Estilos adicionales para el contenedor de Google */
+#g_id_onload {
+  margin-bottom: 1rem;
+}
+
+/* Efectos de hover para elementos interactivos */
+input[type="text"]:hover,
+input[type="password"]:hover {
+  border-color: var(--accent-color);
+  background: rgba(15, 23, 42, 0.9);
+}
+
+/* Animaciones sutiles */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-container {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Responsividad */
+@media (max-width: 480px) {
+  .login-container {
+    margin: 1rem;
+    padding: 2rem;
+  }
+  
+  .login-container h2 {
+    font-size: 1.5rem;
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  button {
+    font-size: 0.9rem;
+  }
+}
+
+/* Estados de validación */
+.input-error {
+  border-color: var(--error-color) !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+.input-success {
+  border-color: var(--success-color) !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
+}
+
+/* Loader para botón */
+.loading {
+  position: relative;
+  color: transparent;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}

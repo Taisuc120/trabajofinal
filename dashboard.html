@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Bienvenida</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+  <h1>Bienvenido/a</h1>
+  <p id="nombre"></p>
+  <p id="email"></p>
+  <img id="foto" alt="Foto de perfil" />
+
+  <div class="buttons">
+    <button class="btn btn-practica1" onclick="irAPractica1()">Práctica N°1</button>
+    <button class="btn btn-practica2" onclick="irAPractica2()">Práctica N°2</button>
+    <button class="btn btn-consultas" onclick="irAConsultas()">Consultas</button>
+  </div>
+
+  <script>
+    // Recuperamos los datos del localStorage
+    const nombre = localStorage.getItem("nombre");
+    const email = localStorage.getItem("email");
+    const foto = localStorage.getItem("foto");
+
+    // Mostramos los datos en la página
+    document.getElementById("nombre").innerText = "Usuario: " + nombre;
+    document.getElementById("email").innerText = "Correo: " + email;
+    document.getElementById("foto").src = foto;
+
+    // Funciones para los botones
+    function irAPractica1() {
+      window.location.href = "trabajo_01.html";
+    }
+
+    function irAPractica2() {
+      window.location.href = "trabajo_02.html";
+    }
+
+    function irAConsultas() {
+      window.location.href = "consultas.html";
+    }
+  </script>
+</body>
+</html>

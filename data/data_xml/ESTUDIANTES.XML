@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ESTUDIANTES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ESTUDIANTE>
+		<DNI>12345678</DNI>
+		<Nombre>WILBER</Nombre>
+		<Apellido>QUISPE</Apellido>
+		<Edad>20</Edad>
+	</ESTUDIANTE>
+	<ESTUDIANTE>
+		<DNI>12345678</DNI>
+		<Nombre>FREDY</Nombre>
+		<Apellido>ONOFRE</Apellido>
+		<Edad>23</Edad>
+	</ESTUDIANTE>
+	<ESTUDIANTE>
+		<DNI>12345678</DNI>
+		<Nombre>ROBERTO</Nombre>
+		<Apellido>CARLOS</Apellido>
+		<Edad>19</Edad>
+	</ESTUDIANTE>
+	<ESTUDIANTE>
+		<DNI>12345678</DNI>
+		<Nombre>LUIS</Nombre>
+		<Apellido>PEREZ</Apellido>
+		<Edad>20</Edad>
+	</ESTUDIANTE>
+</ESTUDIANTES>

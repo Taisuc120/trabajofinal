@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCENTES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<DOCENTE>
+		<DNI>87654321</DNI>
+		<Nombre>JAVIER</Nombre>
+		<Apellido>OLVEA</Apellido>
+		<Curso>C003</Curso>
+	</DOCENTE>
+	<DOCENTE>
+		<DNI>87654321</DNI>
+		<Nombre>JUAN CARLOS</Nombre>
+		<Apellido>QUIRITA</Apellido>
+		<Curso>C002</Curso>
+	</DOCENTE>
+	<DOCENTE>
+		<DNI>87654321</DNI>
+		<Nombre>ALFREDO</Nombre>
+		<Apellido>CCARI</Apellido>
+		<Curso>C001</Curso>
+	</DOCENTE>
+</DOCENTES>
